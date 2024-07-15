@@ -6,7 +6,7 @@ from models.user import User
 
 fs = FileStorage()
 
-# All States
+# All Users
 all_users = fs.all(User)
 print("All Users: {}".format(len(all_users.keys())))
 for user_key in all_users.keys():
@@ -19,7 +19,7 @@ fs.new(new_user)
 fs.save()
 print("New User: {}".format(new_user))
 
-# All States
+# All Users
 all_users = fs.all(User)
 print("All Users: {}".format(len(all_users.keys())))
 for user_key in all_users.keys():

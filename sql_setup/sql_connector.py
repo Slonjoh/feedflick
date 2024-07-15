@@ -50,7 +50,7 @@ def main():
     password = 'root'
     db_name = 'feedflick_dev_db'
     username = 'feedflick_dev'
-    user_password = 'feedflick_dev_pwd'
+    user_password = 'Feedflick2#'
 
     # Create MySQL connection
     connection = create_mysql_connection(host, user, password)
