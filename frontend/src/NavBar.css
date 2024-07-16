@@ -1,0 +1,45 @@
+.nav-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon h2 {
+  margin-right: 0.5rem;
+}
+
+.nav-ul {
+  display: flex;
+  list-style: none;
+}
+
+.nav-ul li {
+  margin: 0 1rem;
+}
+
+.register button {
+  margin-left: 1rem;
+}
+
+.bar {
+  display: none;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .nav-ul, .register {
+    display: none;
+  }
+  .bar {
+    display: block;
+  }
+}
+

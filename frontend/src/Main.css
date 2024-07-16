@@ -1,0 +1,24 @@
+.container1, .container2, .container3, .container4, .container5, .container6 {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  background: #f9f9f9;
+  margin: 1rem 0;
+}
+
+.c1-child1, .c1-child2 {
+  flex: 1;
+}
+
+.c1-child1 {
+  padding-right: 2rem;
+}
+
+.c1-child2 img {
+  max-width: 100%;
+}
+
+.audience, .potential {
+  margin-bottom: 1rem;
+}
+
