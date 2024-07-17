@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.signup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.signup-logo {
+  height: 40px;
+}
+
+.signup-header nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.signup-header nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.signup-nav-buttons .nav-button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.signup-form-section, .signup-image-section {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.signup-form {
+  max-width: 400px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.signup-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.signup-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-form button:hover {
+  background-color: #333333;
+}
+
+.user-type-section p {
+  margin-bottom: 10px;
+}
+
+.user-type-section label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.signup-image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+

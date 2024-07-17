@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import './Signup.css';
+import feedflickLogo from '../public/images/feedflick-logo.png';
 
-const Signup = () => {
+function Signup() {
   const [formData, setFormData] = useState({
-    username: '',
+    firstname: '',
+    lastname: '',
     email: '',
-    password: ''
+    username: '',
+    password: '',
+    confirmPassword: '',
+    userType: ''
   });
 
   const handleChange = (e) => {
@@ -13,48 +19,74 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement your signup logic here
+    // Handle form submission logic here
   };
 
   return (
-    <div className="signup-form">
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
+    <div className="signup-page">
+      <header className="signup-header">
+        <img src={feedflickLogo} alt="Feedflick Logo" className="signup-logo" />
+        <nav>
+          <ul>
+            <li><a href="/publish">Publish</a></li>
+            <li><a href="/engage">Engage</a></li>
+            <li><a href="/socials">Socials</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+          </ul>
+        </nav>
+        <div className="signup-nav-buttons">
+          <a href="/login" className="nav-button login-button">Login</a>
+          <a href="/signup" className="nav-button get-started-button">Get Started</a>
         </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Signup</button>
-      </form>
+      </header>
+      <main>
+        <section className="signup-form-section">
+          <form className="signup-form" onSubmit={handleSubmit}>
+            <label>
+              Firstname
+              <input type="text" name="firstname" placeholder="Enter first name" value={formData.firstname} onChange={handleChange} required />
+            </label>
+            <label>
+              Lastname
+              <input type="text" name="lastname" placeholder="Enter last name" value={formData.lastname} onChange={handleChange} required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="Enter email" value={formData.email} onChange={handleChange} required />
+            </label>
+            <label>
+              Username
+              <input type="text" name="username" placeholder="Enter username" value={formData.username} onChange={handleChange} required />
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" placeholder="Enter password" value={formData.password} onChange={handleChange} required />
+            </label>
+            <label>
+              Confirm Password
+              <input type="password" name="confirmPassword" placeholder="Confirm password" value={formData.confirmPassword} onChange={handleChange} required />
+            </label>
+            <div className="user-type-section">
+              <p>Who are you?</p>
+              <label>
+                <input type="radio" name="userType" value="business" checked={formData.userType === 'business'} onChange={handleChange} />
+                A business to grow social presence
+              </label>
+              <label>
+                <input type="radio" name="userType" value="individual" checked={formData.userType === 'individual'} onChange={handleChange} />
+                An individual looking to improve my engagement
+              </label>
+            </div>
+            <button type="submit">Get Started</button>
+          </form>
+        </section>
+        <section className="signup-image-section">
+          <img src={require('../public/images/signup-page.png')} alt="Signup Illustration" />
+        </section>
+      </main>
     </div>
   );
-};
+}
 
 export default Signup;
 
