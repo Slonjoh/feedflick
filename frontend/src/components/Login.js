@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -7,6 +10,7 @@ const Login = () => {
   });
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false); // State to manage password visibility
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,6 +24,10 @@ const Login = () => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
@@ -65,15 +73,20 @@ const Login = () => {
           </div>
           <div className="login-form">
             <label>Password:</label>
+	    <div className="password-container">
             <input
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               name="password"
 	      placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
 	      required
             />
-          </div>
+	    <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
+	      {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+	    </span>
+	    </div>
+	  </div>
           <div className="button-group">
             <button type="submit">Login </button>
           </div>

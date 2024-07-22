@@ -134,6 +134,24 @@ input[type="password"] {
   cursor: pointer;
 }
 
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* Ensure there is space for the icon */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #888;
+}
+
 .menu-icon {
   display: none;
   font-size: 34px;

@@ -63,39 +63,39 @@ function Signup() {
             <h4 className="form-title">Get Started Now</h4>
             <div className="form-group">
               <label>Firstname</label>
-              <input type="text" name="firstname" placeholder="Enter first name" value={formData.firstname} onChange={handleChange} />
+              <input type="text" name="firstname" placeholder="Enter first name" value={formData.firstname} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label>Lastname</label>
-              <input type="text" name="lastname" placeholder="Enter last name" value={formData.lastname} onChange={handleChange} />
+              <input type="text" name="lastname" placeholder="Enter last name" value={formData.lastname} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label>Email</label>
-              <input type="email" name="email" placeholder="Enter email" value={formData.email} onChange={handleChange} />
+              <input type="email" name="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label>Username</label>
-              <input type="text" name="username" placeholder="Enter username" value={formData.username} onChange={handleChange} />
+              <input type="text" name="username" placeholder="Enter username" value={formData.username} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input type="password" name="password" placeholder="Enter password" value={formData.password} onChange={handleChange} />
+              <input type="password" name="password" placeholder="Enter password" value={formData.password} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label>Confirm Password</label>
-              <input type="password" name="confirmPassword" placeholder="Confirm password" value={formData.confirmPassword} onChange={handleChange} />
+              <input type="password" name="confirmPassword" placeholder="Confirm password" value={formData.confirmPassword} onChange={handleChange} required />
             </div>
             <div className="form-group full-width">
               <label><b>Who are you?</b></label>
               <div className="radio-group">
                 <label htmlFor="business">
-                  <input type="radio" id="business" name="userType" value="business" checked={formData.userType === 'business'} onChange={handleChange} />
+                  <input type="radio" id="business" name="userType" value="business" checked={formData.userType === 'business'} onChange={handleChange} required />
                   A business to grow social presence
                 </label>
               </div>
               <div className="radio-group">
                 <label htmlFor="individual">
-                  <input type="radio" id="individual" name="userType" value="individual" checked={formData.userType === 'individual'} onChange={handleChange} />
+                  <input type="radio" id="individual" name="userType" value="individual" checked={formData.userType === 'individual'} onChange={handleChange} required />
                   An individual looking to improve my engagement
                 </label>
               </div>
