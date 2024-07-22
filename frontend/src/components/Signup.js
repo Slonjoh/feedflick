@@ -37,10 +37,10 @@ function Signup() {
           </div>
           <nav className={menuOpen ? 'active' : ''}>
             <ul>
-              <li><a href="/publishing">Publish</a></li>
-              <li><a href="/socials">Engage</a></li>
-              <li><a href="/engagements">Socials</a></li>
-              <li><a href="/resources">Dashboard</a></li>
+              <li><a href="/publish">Publish</a></li>
+              <li><a href="/engage">Engage</a></li>
+              <li><a href="/socials">Socials</a></li>
+              <li><a href="/dashboard">Dashboard</a></li>
             </ul>
           </nav>
           <div className="menu-icon" onClick={toggleMenu}>
