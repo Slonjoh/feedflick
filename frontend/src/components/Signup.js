@@ -31,10 +31,10 @@ function Signup() {
     <div>
       <header>
         <div className="header-content">
-          <div className="header-logo">
+          <a href="/" className="header-logo">
             <img src={`${process.env.PUBLIC_URL}/images/feedflick-logo.svg`} alt="Feedflick Logo" />
             <span>feedflick</span>
-          </div>
+          </a>
           <nav className={menuOpen ? 'active' : ''}>
             <ul>
               <li><a href="/publish">Publish</a></li>

@@ -1,29 +1,98 @@
-.Home {
-  text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa; /* Light background for a clean look */
+  margin: 0;
+  padding: 0;
 }
 
-.Home-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Vertically center items */
+  justify-content: space-between; /* Space out items */
+  padding: 10px 20px; /* Padding around header */
+  background-color: white; /* White background for header */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+
+.header-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-start;
+}
+
+.header-logo {
+  text-decoration: none;
+  display: flex; /* Align logo and text horizontally */
+  align-items: center; /* Vertically center logo and text */
+  margin-right: 90px; /* Added margin to separate logo from navigation */
+}
+
+.header-logo span {
+  margin-left: 5px; /* Add space between the image and text */
+  color: black; /* Set the text color */
+  font-weight: medium; /* Make the text bold */
+}
+.header-logo img {
+  height: 40px; /* Fixed height for logo */
+  margin-right: 5px; /* Space between logo and text */
+}
+
+nav ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Align navigation items horizontally */
+}
+
+nav {
+  flex-grow: 1; /* Ensures the nav takes up remaining space */
+}
+
+nav ul li {
+  margin: 0 15px; /* Space between navigation items */
+}
+
+nav ul li a {
+  text-decoration: none; /* Remove underline from links */
+  color: black; /* Black text color */
+  font: inherit;
+}
+
+.auth-buttons {
+  display: flex; /* Align buttons horizontally */
+}
+
+.auth-buttons button {
+  margin-left: 10px; /* Space between buttons */
+  background-color: black; /* Black background for buttons */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Padding inside buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 10px;
+}
+
+.auth-buttons a {
+  color: white; /* White text color for links */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.auth-buttons .arrow {
+  margin-left: 6px;
 }
 
 .Home-intro {
   margin: 20px 0;
 }
 
-.Home-intro input {
+.intro input {
   padding: 10px;
   font-size: 16px;
   margin-right: 10px;
 }
 
-.Home-intro button {
+.intro button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #61dafb;
@@ -31,22 +100,79 @@
   cursor: pointer;
 }
 
-.Home-intro button:hover {
+.intro button:hover {
   background-color: #21a1f1;
 }
 
-.Home-features {
+.features {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px;
 }
 
-.Home-features div {
+.features div {
   margin: 20px 0;
 }
 
-.Home-features h3 {
+.features h3 {
   color: #61dafb;
+}
+
+
+/* Responsive on mobile phones */
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .header-logo {
+    margin-left: 40px; /* Add margin to the left of the logo */
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav.active {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 20px;
+  }
+
+  nav ul {
+    display: block;
+  }
+
+  nav ul li {
+    margin: 15px 0;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    justify-content: space-between; /* Space out the buttons */
+    width: 30%;
+    position: absolute;
+    right: 3px; /* Position the menu icon to the left */
+  }
+
+  .auth-buttons button {
+    /*margin: 0 5px;*/
+    margin-top: 4px;
+    padding: 2px 4px; /* Reduce padding to make buttons smaller */
+    font-size: 0.8rem; /* Reduce font size */
+    flex: 1; /* Make buttons fill available space */
+    border-radius: 10px; /* Ensure buttons are rectangular with rounded corners */
+  }
+
+  .auth-buttons .arrow {
+  display: none;
+  }
 }
 

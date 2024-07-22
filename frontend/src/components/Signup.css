@@ -22,9 +22,16 @@ header {
 }
 
 .header-logo {
+  text-decoration: none;
   display: flex; /* Align logo and text horizontally */
   align-items: center; /* Vertically center logo and text */
   margin-right: 90px; /* Added margin to separate logo from navigation */
+}
+
+.header-logo span {
+  margin-left: 5px; /* Add space between the image and text */
+  color: black; /* Set the text color */
+  font-weight: medium; /* Make the text bold */
 }
 
 .header-logo img {
