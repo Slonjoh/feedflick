@@ -4,10 +4,15 @@ import './Home.css';
 
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
   const handleGetStartedClick = () => {
-    navigate('/signup');
+    navigate('/signup', { state: { email } });
   };
 
   const toggleMenu = () => {
@@ -46,23 +51,42 @@ function Home() {
         </header>
         <main>
           <section className="intro">
-            <h1>Expand your audience with our powerful management solutions</h1>
-            <p>An all-in-one social media management platform, Feedflick, unlocks the full potential of social media, transforming your marketing strategy in every aspect of your organization, while helping you build an audience organically.</p>
-            <input type="email" placeholder="enter your email" />
-            <button onClick={handleGetStartedClick}>Get Started now</button>
+            <div className="intro-content">
+              <div className="intro-video">
+                <video src={`${process.env.PUBLIC_URL}/images/homepage_video.mp4`} autoPlay loop muted />
+              </div>
+              <div className="intro-text">
+                <h1>Up your social media game with Feedflick</h1>
+                <p>
+                  A solution for anyone aiming for internet fame,
+                  an organization looking to amplify your reach,
+                  Feedflick is the ultimate social media management platform
+                  that transforms your marketing game
+                  by tracking key metrics and expanding your influence online.
+                </p>
+                <input
+                  type="email"
+                  placeholder="enter your email"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+                <button onClick={handleGetStartedClick}>Get Started now</button>
+              </div>
+            </div>
           </section>
+
           <section className="features">
             <div>
-              <h3>Grow your followers</h3>
-              <p>Increasing your followers count is crucial for expanding your brand's reach and visibility. By growing your followers, you're effectively widening your audience base, which can lead to increased brand awareness and exposure. More followers mean more people are exposed to your products or services, thereby enhancing the likelihood of attracting potential customers.</p>
+              <h3>Publish your post</h3>
+              <p>Effortlessly schedule and publish your posts with Feedflick! Our platform helps you to plan ahead, ensuring your content goes live exactly when you want. Stay consistent, save time, and enjoy consistent engagement without the hassle.</p>
             </div>
             <div>
-              <h3>Increase your engagements</h3>
-              <p>Engagements on social media platforms, such as likes, comments, shares, and interactions, are essential indicators of audience interest and interaction with your brand. Increased engagements not only signify active interest in your content but also provide valuable insights into your audience's preferences and behaviors.</p>
+              <h3>Analyze your online performance</h3>
+              <p>Feedflick provides in-depth analysis of your online engagement. Monitor views, likes, comments and reposts to understand your audience and help you create contents that interest your audience.</p>
             </div>
             <div>
-              <h3>Analyze your performance</h3>
-              <p>Evaluating and analyzing your social media performance is a pivotal step towards optimizing your marketing strategies and maximizing sales and profits. By carefully examining key metrics such as engagement rates, follower growth, content reach, and conversion rates, you gain valuable insights into what's working well and where improvements can be made.</p>
+              <h3>Live Notifications</h3>
+              <p>Feedflick ensures you're always connected. Receive live notifications from your various social media platform  DMs and quickly reply to important messages, keeping you engaged with your followers.</p>
             </div>
           </section>
         </main>

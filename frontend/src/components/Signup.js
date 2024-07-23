@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Signup.css';
 
 function Signup() {
+  const location = useLocation();
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -13,6 +15,15 @@ function Signup() {
   });
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (location.state && location.state.email) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        email: location.state.email
+      }));
+    }
+  }, [location.state]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
