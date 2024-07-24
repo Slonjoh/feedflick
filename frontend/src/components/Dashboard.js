@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('post');
+  const [firstName, setFirstName] = useState('');
+
+  useEffect(() => {
+    // Fetch user data from the backend
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('/api/user');
+        const data = await response.json();
+        setFirstName(data.firstName);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -21,6 +37,10 @@ function Dashboard() {
     <>
       <header>
         <div className="header-content">
+	  <div className="header-user">
+	    <span>Hi {firstName},</span>
+	  </div>
+
           <a href="/" className="header-logo">
             <img src={`${process.env.PUBLIC_URL}/images/feedflick-logo.svg`} alt="Feedflick Logo" />
             <span>feedflick</span>
