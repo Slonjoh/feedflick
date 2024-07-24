@@ -44,9 +44,6 @@ function Home() {
             <button>
               <a href="/login">Login <span className="arrow">→</span></a>
             </button>
-            <button>
-              <a href="/signup">Get Started <span className="arrow">→</span></a>
-            </button>
           </div>
         </header>
         <main>
@@ -89,6 +86,42 @@ function Home() {
               <p>Feedflick ensures you're always connected. Receive live notifications from your various social media platform  DMs and quickly reply to important messages, keeping you engaged with your followers.</p>
             </div>
           </section>
+
+          <section className="dashboard-feature">
+            <div className="dashboard-feature-text">
+              <h2>Post, New Notification, Feedflick</h2>
+              <p>Too busy to post? Just schedule it.</p>
+              <p>It's much hassle staying updated on trending updates on all your socials? All you need is feedflick to keep you updated.</p>
+              <p>100's of unanswered messages? Let's organize them to one dashboard for you.</p>
+              <p>Feedflick helps you track posts, set up schedules, and get pinged for new messages. Stay connected and make every post count.</p>
+            </div>
+            <div className="dashboard-feature-image">
+              <img src={`${process.env.PUBLIC_URL}/images/publish-dashboard.webp`} alt="Publish Dashboard" />
+            </div>
+          </section>
+
+          <section className="experience">
+            <h2>The Experience</h2>
+            <div className="experience-content">
+              <div className="experience-item">
+                <img src={`${process.env.PUBLIC_URL}/images/graph.svg`} alt="Icon 1" />
+                <p>Insightful analytics to elevate your social game and drive business growth.</p>
+              </div>
+              <div className="experience-item">
+                <img src={`${process.env.PUBLIC_URL}/images/global_community.svg`} alt="Icon 2" />
+                <p>Discover your audience and amplify your reach globally.</p>
+              </div>
+              <div className="experience-item">
+                <img src={`${process.env.PUBLIC_URL}/images/handshake.svg`} alt="Icon 3" />
+                <p>Build a stronger online community.</p>
+              </div>
+            </div>
+          </section>
+
+          <footer className="footer">
+            <p>&copy; Slonjoh 2024</p>
+          </footer>
+
         </main>
       </div>
     </>
