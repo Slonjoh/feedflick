@@ -62,9 +62,6 @@ function Signup() {
           <button>
             <a href="/login">Login <span className="arrow">→</span></a>
           </button>
-          <button>
-            <a href="/signup">Get Started <span className="arrow">→</span></a>
-          </button>
         </div>
       </header>
       <div className="signup-container">

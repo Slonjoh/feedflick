@@ -252,7 +252,7 @@ input[type="password"] {
 
   .auth-buttons button {
     /*margin: 0 5px;*/
-    margin-top: 4px;
+    margin-top: 32px;
     padding: 2px 4px; /* Reduce padding to make buttons smaller */
     font-size: 0.8rem; /* Reduce font size */
     flex: 1; /* Make buttons fill available space */

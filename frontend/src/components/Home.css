@@ -157,9 +157,8 @@ nav ul li a {
   align-items: center;
   flex-wrap: wrap;
   padding: 40px 20px;
-  margin: 20px;
   flex-direction: row;
-  background: local;
+  background: linear-gradient(#fff 0% 10%, #fff 40%);
 }
 
 .features div {
@@ -195,6 +194,101 @@ nav ul li a {
   font-size: 0.9rem;
   line-height: 1.6;
   font-family: Poppins;
+}
+
+.dashboard-feature {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(#fff 30% 10%, #e9f5fb 80%);
+}
+
+.dashboard-feature-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.dashboard-feature-text h2 {
+  font-size: 1.5rem;
+  color: darkslategray;
+  font-family: cursive;
+}
+
+.dashboard-feature-text p {
+  font-size: 20px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-family: Poppins;
+}
+
+.dashboard-feature-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.dashboard-feature-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.experience {
+  padding: 60px 20px;
+  background-color: #f5f5f5; /* Light grey background */
+  text-align: center;
+  height: 550px;
+}
+
+.experience h2 {
+  font-size: 2rem;
+  margin-top: 165px;
+  color: darkslategray;
+  font-family: cursive;
+}
+
+.experience-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  padding: 20px 40px;
+}
+
+.experience-item {
+  width: 250px;
+  margin: 20px;
+  text-align: center;
+  font-family: Poppins;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.experience-item img {
+  height: 90px;
+  margin-bottom: 20px;
+}
+
+.experience-item p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.footer {
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.footer p {
+  margin: 0;
 }
 
 .menu-icon {
@@ -248,8 +342,7 @@ nav ul li a {
   }
 
   .auth-buttons button {
-    /*margin: 0 5px;*/
-    margin-top: 4px;
+    margin-top: 32px;
     padding: 2px 4px; /* Reduce padding to make buttons smaller */
     font-size: 0.8rem; /* Reduce font size */
     flex: 1; /* Make buttons fill available space */
@@ -313,6 +406,57 @@ nav ul li a {
     height: auto;
     padding: 30px;
     margin: 10px 0;
+  }
+  
+  .dashboard-feature {
+    flex-direction: column; /* Stack elements vertically on mobile */
+    padding: 20px 10px;
+  }
+
+  .dashboard-feature-text {
+    margin-bottom: 20px; /* Add space between text and image */
+    text-align: center; /* Center-align text on mobile */
+  }
+
+  .dashboard-feature-text h2 {
+    font-size: 1.5rem;
+    font-family: Poppins;
+  }
+
+  .dashboard-feature-text p {
+    font-size: 0.9rem;
+  }
+
+  .dashboard-feature-image {
+    margin-top: 20px; /* Add space above image on mobile */
+  }
+
+  .dashboard-feature-image img {
+    width: 100%; /* Ensure image takes full width on mobile */
+    height: auto;
+  }
+
+  .experience-content {
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
+  }
+
+  .experience-item {
+    width: 80%;
+    margin: 10px 0;
+  }
+  .experience h2 {
+    font-family: Poppins;
+  }
+
+  .footer {
+    padding: 6px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 408px;
   }
 }
 
