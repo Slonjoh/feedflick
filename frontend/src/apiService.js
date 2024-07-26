@@ -2,61 +2,56 @@ import axios from 'axios';
 
 const API_URL = 'http://192.168.0.200:5000';
 
-// Helper function to validate JWT format
-const isValidJWT = (token) => {
-  const parts = token.split('.');
-  return parts.length === 3;
-};
-
-
 export const signup = async (formData) => {
   const response = await axios.post(`${API_URL}/signup`, formData);
+  const { access_token } = response.data;
+  if (access_token) {
+    localStorage.setItem('access_token', access_token);
+  } else {
+    console.error('No token received');
+  }
   return response.data;
 };
 
 export const login = async (formData) => {
   const response = await axios.post(`${API_URL}/login`, formData);
+  const { access_token } = response.data;
+  if (access_token) {
+    localStorage.setItem('access_token', access_token);
+  } else {
+    console.error('No token received');
+  }
   return response.data;
 };
 
 export const fetchUserData = async () => {
-  const token = localStorage.getItem('token');
-  console.log('Token retrieved from localStorage:', token); // Log the retrieved token
-
-  if (!token) {
+  const access_token = localStorage.getItem('access_token');
+  if (!access_token) {
     throw new Error('No token found');
   }
 
-  if (!isValidJWT(token)) {
-    throw new Error('Invalid token format');
-  }
+  const response = await axios.get(`${API_URL}/user`, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 
-  try {
-    const response = await axios.get(`${API_URL}/user`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data.user;
-  } catch (error) {
-    console.error('Error fetching user data:', error.response || error.message);
-    throw error;
-  }
+  return response.data.user;
 };
 
 export const logout = async () => {
-  const token = localStorage.getItem('token');
-  if (!token) {
+  const access_token = localStorage.getItem('access_token');
+  if (!access_token) {
     throw new Error('No token found');
   }
 
   const response = await axios.post(`${API_URL}/logout`, {}, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${access_token}`,
     },
   });
 
-  localStorage.removeItem('token');
+  localStorage.removeItem('access_token');
   return response.data;
 };
 
