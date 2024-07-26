@@ -4,6 +4,7 @@ import './Dashboard.css';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('post');
+  const [error, setError] = useState(null);
   const [firstName, setFirstName] = useState('');
 
   useEffect(() => {
@@ -14,11 +15,21 @@ function Dashboard() {
         setFirstName(userData.first_name);
       } catch (error) {
         console.error('Error fetching user data:', error);
+	setError(error.message);
       }
     };
 
     getUserData();
   }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!firstName) {
+    return <div>Loading...</div>;
+  }
+
 
   const renderContent = () => {
     switch (activeTab) {
