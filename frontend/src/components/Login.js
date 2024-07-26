@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { login } from '../apiService';
 import './Login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -10,16 +11,24 @@ const Login = () => {
   });
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false); // State to manage password visibility
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     // Implement your login logic here
+    try {
+      const response = await login(formData);
+      localStorage.setItem('token', response.token);
+      window.location.href = '/dashboard';  // Redirect to dashboard
+    } catch (error) {
+      setErrorMessage('Invalid credentials. Please try again.');
+    }
   };
 
   const toggleMenu = () => {
@@ -66,7 +75,7 @@ const Login = () => {
               type="email"
               name="email"
 	      placeholder="Enter your email"
-              value={formData.username}
+              value={formData.email}
               onChange={handleChange}
 	      required
             />
@@ -87,6 +96,7 @@ const Login = () => {
 	    </span>
 	    </div>
 	  </div>
+	  {errorMessage && <div className="error-message">{errorMessage}</div>}
           <div className="button-group">
             <button type="submit">Login </button>
           </div>

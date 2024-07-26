@@ -11,6 +11,9 @@ from models.create_post import Post
 from models.socialmedia_post import SocialMediaPost
 from models.base_model import Base
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class DBStorage:
@@ -31,6 +34,9 @@ class DBStorage:
 
         if user is None or password is None or db is None:
             raise ValueError("MySQL credentials are not provided")
+
+# 'mysql+mysqldb://{user}:{password}@{host}/{db}'.format(user, password, host, db),
+
 
         self.__engine = create_engine(
             'mysql+mysqldb://{}:{}@{}/{}'.format(user, password, host, db),

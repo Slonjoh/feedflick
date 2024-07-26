@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { fetchUserData } from '../apiService';
 import './Dashboard.css';
 
 function Dashboard() {
@@ -6,18 +7,17 @@ function Dashboard() {
   const [firstName, setFirstName] = useState('');
 
   useEffect(() => {
-    // Fetch user data from the backend
-    const fetchUserData = async () => {
+    // Fetch user data from the backend api
+    const getUserData = async () => {
       try {
-        const response = await fetch('/api/user');
-        const data = await response.json();
-        setFirstName(data.firstName);
+        const userData = await fetchUserData();
+        setFirstName(userData.first_name);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
 
-    fetchUserData();
+    getUserData();
   }, []);
 
   const renderContent = () => {
