@@ -46,6 +46,36 @@ header {
   font-weight: bold;
 }
 
+.header-user span {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 30px; /* Adjust to position the dropdown menu correctly */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 150px; /* Adjust width as needed */
+}
+
+.logout-button {
+  display: block;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+
 nav.top-nav {
   display: flex;
   align-items: center;
@@ -81,6 +111,8 @@ nav.top-nav li.active {
     font-size: 12px;
     font-weight: bold;
   }
+
+
   nav.top-nav {
     display: flex;
     align-items: center;

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { fetchUserData } from '../apiService';
+import { fetchUserData, logout } from '../apiService';
+import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
+
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('post');
-  const [error, setError] = useState(null);
+  /*const [error, setError] = useState(null);*/
   const [firstName, setFirstName] = useState('');
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user data from the backend api
@@ -15,21 +19,33 @@ function Dashboard() {
         setFirstName(userData.first_name);
       } catch (error) {
         console.error('Error fetching user data:', error);
-	setError(error.message);
+	/*setError(error.message);*/
       }
     };
 
     getUserData();
   }, []);
 
-  if (error) {
+  /*if (error) {
     return <div>Error: {error}</div>;
   }
 
   if (!firstName) {
     return <div>Loading...</div>;
-  }
+  }*/
 
+  const handleLogout = async () => {
+    try {
+      await logout(); // Call the logout function
+      navigate('/'); // Redirect to home
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible); // toggle dropdown visibility
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -49,7 +65,12 @@ function Dashboard() {
       <header>
         <div className="header-content">
 	  <div className="header-user">
-	    <span>Hi {firstName},</span>
+	    <span onClick={toggleDropdown}>Hi {firstName},</span>
+	    {dropdownVisible && (
+              <div className="dropdown-menu">
+                <button onClick={handleLogout} className="logout-button">Logout</button>
+	      </div>
+            )}
 	  </div>
 
           <a href="/" className="header-logo">
