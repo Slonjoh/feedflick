@@ -20,6 +20,7 @@ class User(BaseModel, Base):
     first_name = Column(String(128))
     last_name = Column(String(128))
     username = Column(String(50)) #Column(String(50), unique=True, nullable=False)
+    profile_picture_url = Column(String(255))  # New column for profile picture URL
 
     """@property
     def password(self):

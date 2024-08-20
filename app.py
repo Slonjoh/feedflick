@@ -36,12 +36,21 @@ class User(db.Model):
     first_name = db.Column(db.String(128))
     last_name = db.Column(db.String(128))
     username = db.Column(db.String(50), unique=True)
+    profile_picture_url = db.Column(db.String(256))
 
 @app.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
     hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
-    new_user = User(email=data['email'], password=hashed_password, first_name=data['first_name'], last_name=data['last_name'], username=data['username'])
+    profile_picture_url = data.get('profile_picture_url', '')  # Handle profile picture URL
+    new_user = User(
+        email=data['email'],
+        password=hashed_password,
+        first_name=data['first_name'],
+        last_name=data['last_name'],
+        username=data['username'],
+        profile_picture_url=profile_picture_url  # Save profile picture URL
+    )
     db.session.add(new_user)
     db.session.commit()
     return jsonify({'message': 'User created successfully'}), 201
@@ -51,7 +60,14 @@ def login():
     data = request.get_json()
     user = User.query.filter_by(email=data['email']).first()
     if user and bcrypt.check_password_hash(user.password, data['password']):
-        access_token = create_access_token(identity={'email': user.email, 'first_name': user.first_name, 'last_name': user.last_name, 'username': user.username})
+        profile_picture_url = user.profile_picture_url if user.profile_picture_url else ''
+        access_token = create_access_token(identity={
+            'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'username': user.username,
+            'profile_picture_url': profile_picture_url
+        })
         return jsonify({'access_token': access_token}), 200
     else:
         return jsonify({'message': 'Invalid credentials'}), 401

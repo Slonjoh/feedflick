@@ -301,13 +301,13 @@ nav ul li a {
 
 /* Responsive on mobile phones */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .menu-icon {
     display: block;
   }
 
   .header-logo {
-    margin-left: 40px; /* Add margin to the left of the logo */
+    margin-left: 60px; /* Add margin to the left of the logo */
   }
 
   nav {

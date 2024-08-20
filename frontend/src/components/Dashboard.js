@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { fetchUserData, logout } from '../apiService';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
-
+import ProfileIcon from './ProfileIcon';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('post');
-  /*const [error, setError] = useState(null);*/
   const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [profilePictureUrl, setProfilePictureUrl] = useState('');
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -17,22 +18,16 @@ function Dashboard() {
       try {
         const userData = await fetchUserData();
         setFirstName(userData.first_name);
+	setLastName(userData.last_name);
+	setProfilePictureUrl(userData.profile_picture_url);
       } catch (error) {
         console.error('Error fetching user data:', error);
-	/*setError(error.message);*/
       }
     };
 
     getUserData();
   }, []);
 
-  /*if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!firstName) {
-    return <div>Loading...</div>;
-  }*/
 
   const handleLogout = async () => {
     try {
@@ -65,16 +60,20 @@ function Dashboard() {
       <header>
         <div className="header-content">
 	  <div className="header-user">
-	    <span onClick={toggleDropdown}>Hi {firstName},</span>
+            <ProfileIcon 
+              firstName={firstName} 
+              lastName={lastName} 
+              profilePictureUrl={profilePictureUrl} 
+              onClick={toggleDropdown}
+            />
 	    {dropdownVisible && (
               <div className="dropdown-menu">
                 <button onClick={handleLogout} className="logout-button">Logout</button>
 	      </div>
             )}
 	  </div>
-
-          <a href="/" className="header-logo">
-            <img src={`${process.env.PUBLIC_URL}/images/feedflick-logo.svg`} alt="Feedflick Logo" />
+            <a href="/" className="header-logo">
+              <img src={`${process.env.PUBLIC_URL}/images/feedflick-logo.svg`} alt="Feedflick Logo" />
             <span>feedflick</span>
           </a>
         </div>

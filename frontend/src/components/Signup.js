@@ -11,7 +11,9 @@ function Signup() {
     last_name: '',
     email: '',
     username: '',
-    password: ''
+    password: '',
+    confirmPassword: '',
+    userType: '',
   });
 
   useEffect(() => {
@@ -86,6 +88,26 @@ function Signup() {
               <label>Password</label>
               <input type="password" name="password" placeholder="Enter password" value={formData.password} onChange={handleChange} required />
             </div>
+            <div className="form-group">
+              <label>Confirm Password</label>
+              <input type="password" name="confirmPassword" placeholder="Confirm password" value={formData.confirmPassword} onChange={handleChange} required />
+            </div>
+            <div className="form-group full-width">
+              <label><b>Who are you?</b></label>
+              <div className="radio-group">
+                <label htmlFor="business">
+                  <input type="radio" id="business" name="userType" value="business" checked={formData.userType === 'business'} onChange={handleChange} required />
+                  A business to grow social presence
+                </label>
+              </div>
+              <div className="radio-group">
+                <label htmlFor="individual">
+                  <input type="radio" id="individual" name="userType" value="individual" checked={formData.userType === 'individual'} onChange={handleChange} required />
+                  An individual looking to improve my engagement
+                </label>
+              </div>
+            </div>
+
             <div className="form-group full-width">
               <button type="submit">Sign Up</button>
             </div>
