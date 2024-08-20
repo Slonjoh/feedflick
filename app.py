@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.exc import IntegrityError
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from dotenv import load_dotenv
@@ -56,9 +57,20 @@ def signup():
         profile_picture_url=profile_picture_url,
         user_type=data['userType']  # Save user type
     )
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({'message': 'User created successfully'}), 201
+
+    try:
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'message': 'User created successfully'}), 201
+
+    except IntegrityError as e:
+        db.session.rollback()  # Rollback the transaction to avoid partial commits
+        if "Duplicate entry" in str(e.orig):
+            if "for key 'user.username'" in str(e.orig):
+                return jsonify({"message": "Username already exists."}), 409
+            if "for key 'user.email'" in str(e.orig):
+                return jsonify({"message": "Email already exists."}), 409
+        return jsonify({"message": "An unexpected error occurred."}), 500
 
 @app.route('/login', methods=['POST'])
 def login():

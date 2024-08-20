@@ -37,10 +37,12 @@ function Signup() {
       console.log('Signup successful:', response);
       navigate('/login');  // Redirect to login page after successful signup
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-	setErrorMessage(error.response.data.message);
+      if (error.response && error.response.status === 409) {
+	  setErrorMessage('Username already exists. Please choose a different one.');
+      } else if (error.response && error.response.data && error.response.data.message) {
+	  setErrorMessage(error.response.data.message);
       } else {
-	setErrorMessage('An unexpected error occurred. Please try again.');
+	  setErrorMessage('An unexpected error occurred. Please try again.');
       }
       console.error('Signup error:', error);
     }
