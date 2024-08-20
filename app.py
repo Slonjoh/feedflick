@@ -36,20 +36,25 @@ class User(db.Model):
     first_name = db.Column(db.String(128))
     last_name = db.Column(db.String(128))
     username = db.Column(db.String(50), unique=True)
-    profile_picture_url = db.Column(db.String(256))
+    profile_picture_url = db.Column(db.String(256), nullable=True)
+    user_type = db.Column(db.String(50), nullable=False)  # New field for user type
 
 @app.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
+    if data['password'] != data['confirmPassword']:
+        return jsonify({'message': 'Passwords do not match'}), 400
     hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
-    profile_picture_url = data.get('profile_picture_url', '')  # Handle profile picture URL
+    # Handle None profile_picture_url
+    profile_picture_url = data.get('profile_picture_url', '')
     new_user = User(
         email=data['email'],
         password=hashed_password,
         first_name=data['first_name'],
         last_name=data['last_name'],
         username=data['username'],
-        profile_picture_url=profile_picture_url  # Save profile picture URL
+        profile_picture_url=profile_picture_url,
+        user_type=data['userType']  # Save user type
     )
     db.session.add(new_user)
     db.session.commit()

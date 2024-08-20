@@ -6,6 +6,7 @@ import './Signup.css';
 function Signup() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -36,6 +37,11 @@ function Signup() {
       console.log('Signup successful:', response);
       navigate('/login');  // Redirect to login page after successful signup
     } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+	setErrorMessage(error.response.data.message);
+      } else {
+	setErrorMessage('An unexpected error occurred. Please try again.');
+      }
       console.error('Signup error:', error);
     }
   };
@@ -68,6 +74,7 @@ function Signup() {
         <div className="signup-form">
           <form onSubmit={handleSubmit} className="form-grid">
             <h4 className="form-title">Get Started Now</h4>
+	    {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Error message display */}
             <div className="form-group">
               <label>First Name</label>
               <input type="text" name="first_name" placeholder="Enter first name" value={formData.first_name} onChange={handleChange} required />

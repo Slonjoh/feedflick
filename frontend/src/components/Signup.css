@@ -108,6 +108,15 @@ nav ul li a {
   width: 120%;
 }
 
+.error-message {
+  color: red;
+  font-size: 14px;
+  position: absolute;
+  right: 342px;
+  top: 529px;
+}
+
+
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -278,5 +287,13 @@ input[type="password"] {
 
   .signup-form {
     width: 100%;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    position: absolute;
+    right: 85px;
+    top: 773px;
   }
 }
