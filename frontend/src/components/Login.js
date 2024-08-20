@@ -96,7 +96,7 @@ const Login = () => {
 	    </span>
 	    </div>
 	  </div>
-	  {errorMessage && <div className="error-message">{errorMessage}</div>}
+	  {errorMessage && <div className="loginerror-message">{errorMessage}</div>}
           <div className="button-group">
             <button type="submit">Login </button>
           </div>

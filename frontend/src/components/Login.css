@@ -159,6 +159,10 @@ input[type="password"] {
   color: #888;
 }
 
+.loginerror-message {
+  color: red;
+}
+
 .menu-icon {
   display: none;
   font-size: 34px;

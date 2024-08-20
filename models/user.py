@@ -17,27 +17,11 @@ class User(BaseModel, Base):
 
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
-    first_name = Column(String(128))
-    last_name = Column(String(128))
-    username = Column(String(50)) #Column(String(50), unique=True, nullable=False)
+    first_name = Column(String(128), nullable=False)
+    last_name = Column(String(128), nullable=False)
+    username = Column(String(50), unique=True, nullable=False)
     profile_picture_url = Column(String(255), nullable=True)  # New column for profile picture URL
     user_type = Column(String(50), nullable=False)  # New column for user type
-
-    """@property
-    def password(self):
-        raise AttributeError('password is not a readable attribute')
-
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
-
-    @classmethod
-    def get_user_by_username(cls, username):
-        return storage.session.query(cls).filter_by(username=username).first()"""
-
 
     def __init__(self, *args, **kwargs):
         """initializes user"""
